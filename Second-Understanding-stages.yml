@@ -10,33 +10,37 @@ stages:
   jobs:
   - job: job1
     steps:
-      - bash: echo $(PipelineVariable) Build job1
-  - job: job2
-    steps:
-      - bash: echo $(PipelineVariable) Build job2
-- stage: devDeploy
-  variables:
-    environment: dev
-  dependsOn: Build
-  jobs:
-  - job: devDeployjob
-    steps:
-      - bash: echo $(PipelineVariable) DevDeploy job
+      - bash: echo Build job1
+      - bash: echo $(PipelineVariable)
+      - bash: echo $(Build.BuildNumber)
+      - bash: echo $(Build.BuildId)
+      - bash: echo $(Build.SourceBranchName)
+#   - job: job2
+#     steps:
+#       - bash: echo $(PipelineVariable) Build job2
+# - stage: devDeploy
+#   variables:
+#     environment: dev
+#   dependsOn: Build
+#   jobs:
+#   - job: devDeployjob
+#     steps:
+#       - bash: echo $(PipelineVariable) DevDeploy job
 
-- stage: qaDeploy
-  variables:
-    environment: Qa
-  dependsOn: devDeploy
-  jobs:
-  - job: qaDeployjob
-    steps:
-      - bash: echo $(PipelineVariable) QaDeploy job
+# - stage: qaDeploy
+#   variables:
+#     environment: Qa
+#   dependsOn: devDeploy
+#   jobs:
+#   - job: qaDeployjob
+#     steps:
+#       - bash: echo $(PipelineVariable) QaDeploy job
 
-- stage: ProdDeploy
-  variables:
-    environment: Prod
-  dependsOn: qaDeploy
-  jobs:
-  - job: ProdDeployjob
-    steps:
-      - bash: echo $(PipelineVariable) ProdDeploy job
+# - stage: ProdDeploy
+#   variables:
+#     environment: Prod
+#   dependsOn: qaDeploy
+#   jobs:
+#   - job: ProdDeployjob
+#     steps:
+#       - bash: echo $(PipelineVariable) ProdDeploy job
