@@ -15,6 +15,15 @@ stages:
       - bash: echo $(Build.BuildNumber)
       - bash: echo $(Build.BuildId)
       - bash: echo $(Build.SourceBranchName)
+      - bash: java -version
+      - bash: python --version
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
+          Contents: |
+           **/*.yml
+           **/*.tf
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
 #   - job: job2
 #     steps:
 #       - bash: echo $(PipelineVariable) Build job2
