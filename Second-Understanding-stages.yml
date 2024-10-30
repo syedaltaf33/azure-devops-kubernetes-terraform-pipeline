@@ -29,16 +29,6 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'drop'
           publishLocation: 'Container'
-- stage: DevDeployStage
-  jobs:
-  - job: DevJob
-    steps:
-      - task: Bash@3
-        inputs:
-          targetType: 'inline'
-          script: |
-            # Write your commands here
-            ls -R $(System.ArtifactsDirectory)
 #   - job: job2
 #     steps:
 #       - bash: echo $(PipelineVariable) Build job2
