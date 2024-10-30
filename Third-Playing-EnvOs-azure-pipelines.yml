@@ -13,9 +13,9 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage: Buildstage
+  - stage: BuildStage
     jobs:
-    - job: Build
+    - job: BuildJob
       steps:
       -  bash: echo "Do The Build"
   - stage: Devstage
